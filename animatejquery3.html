@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(document) .ready(function(){
+            $("button") .click(function(){
+                $("div") .animate({
+                   left: '+=50px'//parametre tanımlaması yapılırken
+// statik bir değer belirlemek yerine “+=” ifadesi kullanılarak bir önceki konuma 50
+// piksel eklenmesi sağlanmaktadır. Bu sayede butona her tıklandığında kırmızı
+// kutunun mevcut konumu değişmektedir.
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<button>Animasyona başla!</button>
+<p>Bir önceki konumuna göre hareketini güncelleyen kutu örneği.</p>
+<div
+style="background:#FF0000;height:100px;width:100px;position:absolute;"></div>
+
+</body>
+</html>

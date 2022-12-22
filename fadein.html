@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+$("button").click(function(){
+$("#div1").fadeIn();
+$("#div2").fadeIn("slow");
+$("#div3").fadeIn(3000);
+});
+});
+</script>
+</head>
+<body>
+<h1>fadeIn fonksiyonu örnek uygulaması</h1>
+<button>Kutuları görüntülemek için
+tıklayınız!</button><br><br>
+<div id="div1"
+style="width:80px;height:80px;display:none;backgroundcolor:red;"></div><br>
+<div id="div2"
+style="width:80px;height:80px;display:none;backgroundcolor:green;"></div><br>
+<div id="div3"
+style="width:80px;height:80px;display:none;backgroundcolor:blue;"></div>
+</body>
+</html>

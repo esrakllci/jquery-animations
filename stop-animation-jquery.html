@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Animation</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(document) .ready(function(){
+            $("#start") .click(function(){
+                $("div") .animate({left:'100px'}, 5000);
+                $("div").animate({fontSize:'2em'},5000);
+            });
+                $("stop").click(function(){
+                    $("div") .stop();
+                });
+                $("#stop2").click(function(){
+                    $("div").stop(true);
+                });
+                $("#stop3").click(function(){
+                    $("div").stop(true, true);
+                });
+            });
+    </script>
+</head>
+<body>
+<button id="start">Animasyona başla!</button>
+<button id="stop">Animasyonu durdur!</button>
+<button id="stop2">Tüm animasyonları durdur!</button>
+<button id="stop3">Durdur ve sona git</button>
+<p>stop() animasyonunun parametreli ve parametresiz kullanımı.</p><div
+style="background:#00FF00;height:100px;width:200px;position:absolute;">Dur fonksiyonu</div>
+</body>
+</html>

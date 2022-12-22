@@ -1,0 +1,1091 @@
+Object (nesne) veri türü, aynı veya farklı türdeki birden çok değişkenin gruplanması
+gerektiğinde başvurulan bir türdür. Bu türe yönelik ilk örnek dizilerdir (array). 
+-nesneler değişkenlerdir.
+
+-Toplama işlemi için kullanılan artı operatörü ( + ), işlem yapmadan önce
+kendisinin sağındaki ve solundaki değer ya da değişkenlerin türlerine bakar ve türe
+göre işlem yapar. Eğer her iki taraf da sayı ise matematiksel toplama yapar (10 +
+20 = 30). Eğer taraflardan en az bir tanesi metin (string) ise toplama yerine
+bitiştirme yapar (“10” + “ 20” = “1020”). Bu tür işlemlerin beklendiği gibi çalışması
+için işleme giren değişken ya da değerlerin türleri doğru oluşturduğumuzda emin
+olmalıyız.
+
+
+Mantık Operatörleri
+Birden fazla karşılaştırma işleminin birlikte değerlendirilmesi ve tek bir
+doğru (true) ya da yanlış (false) üretilebilmesi için mantık operatörleri kullanılır. Bu
+operatörler tıpkı karşılaştırma operatörleri gibi, koşul ve döngü yapılarında sıklıkla
+kullanılırlar. 
+
+&& ve a <= 10 && b < 100 true
+|| veya a == 5 || b == 5 false
+! değil !(a > b) false
+
+Mantık operatörleri iki ya da daha fazla karşılaştırma ifadesini
+karşılaştırabilir. Buna göre;
+• Ve (&&) operatörünün her iki yanında true değeri varsa sonuç true, bunun
+dışındaki tüm durumlarda sonuç false olur.
+• Veya (||) operatörünün yanındaki ifadelerden en az bir tanesi true ise
+sonuç true, tüm ifadeler false ise sonuç false olur.
+• Değil (!) operatörü sağ tarafına tek ifade alır ve bu ifadenin boolean
+cinsinden tersini (true ise false, false ise true) üretir.
+
+Operatörlerde İşlem Önceliği
+++ Değeri 1 artırma Birinci Sağdan sola (  )
+-- Değeri 1 azaltma Birinci Sağdan sola (  )
+- Eksi değer Birinci Sağdan sola (  )
+! Değil Birinci Sağdan sola (  )
+*, /, % Çarpma, bölme, mod alma İkinci Soldan Sağa (  )
++, — Toplama, çıkarma Üçüncü Soldan Sağa (  )
++ Bitiştirme Üçüncü Soldan Sağa (  )
+<, <= Küçük, küçük veya eşit Dördüncü Soldan Sağa (  )
+>, >= Büyük, büyük veya eşit Dördüncü Soldan Sağa (  )
+== Eşit Beşinci Soldan Sağa (  )
+!= Farklı Beşinci Soldan Sağa (  )
+=== Tür ve değer aynı Beşinci Soldan Sağa (  )
+!== Tür ve değer farklı Beşinci Soldan Sağa (  )
+&& Ve Altıncı Soldan Sağa (  )
+|| Veya Yedinci Soldan Sağa (  )
+= Atama Sekizinci Sağdan sola (  )
++=, -=,
+*=, /=,
+%=
+Aritmetik işlem ve atama Sekizinci Sağdan sola (  )
+İşlem önceliği değiştirmek istenirse, öncelik verilmek istenen operatör ve o
+operatör için gerekli değişken ve değerler parantez ( ) içerisine alınır.
+Mantık ve karşılaştırma operatörleri, eğer aritmetik işlemler ile birlikte
+kullanılacak ise, öncelik aritmetik işlemlerdedir.
+
+var a=5, b=1, c=4;
+var sonuc;
+sonuc = a > b && a > c;  true //öncelik karşılaştırmada ( > )
+sonuc = a % 2 == 0;  false //öncelik mod almada ( % )
+sonuc = a >= 2 - 1 && b >= 0 && c >= 0;  true
+// öncelik çıkarmada ( 2 – 1) , sonra karşılaştırmalarda ( >= ),
+// ardından soldan sağa mantık operatörleri ( && )
+
+KOŞUL KOMUTLARI VE KOŞUL OPERATÖRÜ
+
+• if
+• switch
+Bu iki komuta ek olarak, koşula göre değer aktarma işlemini değiştiren bir
+koşul operatörü vardır:
+• ?:
+
+If Komutu
+Bu komut, kendisi içerisinde yazılan kıyaslama işleminin sonucunda true
+değeri üretilirse devamındaki komutları çalıştırır. Sonuç false ise devamındaki
+komutları çalıştırmaz.
+
+If Komutu Çeşitleri
+if(koşul)
+ komutlar;
+if(koşul)
+ komutlar1;
+else
+ komutlar2;
+if(koşul1)
+ komutlar2;
+else if(koşul2)
+ komutlar2;
+else if(koşul3)
+ komutlar3;
+else
+ komutlar4;
+
+ Koşul true ise,
+komutlar
+çalıştırılır
+Koşul true ise sadece
+komutlar1 çalıştırılır,
+false ise sadece
+komutlar2 çalıştırılır.
+Sırası ile ilk koşuldan itibaren
+kontrol edilir, sonucu true olan
+koşul bulunursa, sadece onun
+altındaki komutlar çalıştırılır ve
+devamındaki koşullara bakılmadan
+if komutu sonlandırılır. Eğer hiçbir
+koşul true değil ise, o zaman else
+komutunun altındaki komutlar
+çalıştırılır. 
+
+Yukarıdaki örnekte, ikinci koşul (b%2==0) true olduğu için, ikinci komut
+çalışır. Bu noktadan sonra artık kontrol yapılmaz ve if komutu sonlanır. Dikkatlice
+incelendiğinde, aslında üçüncü komutun da true olduğu görülebilir, ancak if…else
+if…else yapısında, herhangi bir koşul doğru ise sadece ona bağlı komutlar çalıştırılır
+ve diğer koşullar kontrol edilmez.
+Bu biçimde kullanılan if komutunda istenilen sayıda else if() koşulu ve
+komutları eklenebilir. İstenirse else ifadesiyle, önceki tüm koşulların doğru
+olmadığı durumlarda çalışması için komut veya komutlar eklenebilir, ancak else
+ifadesi mutlaka en sonda ve sadece bir defa yazılmalıdır. Eğer istenirse, else ifadesi
+hiç yazılmayabilir.
+
+If komutu, içerisinde
+elseif ve else içermek
+zorunda değildir.
+
+Aşağıdaki örnekte birbirinden bağımsız üç if komutu görülmektedir. Bu
+şekilde bağımsız olan if komutlarında, tüm koşullar kontrol edilir ve doğru olan
+tüm koşulları için ilgili komutlar çalıştırılır.
+
+var a=5, b=10, c=4;
+if(a%2==0) // false
+ document.write("a değişkeni çift sayıdır");// çalışmaz
+if(b%2==0) // true
+ document.write("b değişkeni çift sayıdır");// çalışır
+ if(c%2==0) // true
+ document.write("c değişkeni çift sayıdır");// çalışır
+
+ ÇIKTI
+b değişkeni çift sayıdır
+c değişkeni çift sayıdır
+
+If komutundaki komutlar eğer istenirse, if satırının devamına da yazılabilir.
+Ancak bu okunabilirliği zorlaştırabilir, o nedenle yukarıdaki örneklerdeki gibi
+komutların if satırından sonra alt satırda yazılması ve satır başından girinti
+yapılarak hizalanması daha doğru olacaktır.
+
+Karmaşık yazım şekli 
+var a=5, b=10, c=4;
+if(a % 2 == 0) b = 2 * a + c;
+else b = a / 2 +c;
+
+Önerilen hizalı yazım şekli
+var a=5, b=10, c=4;
+if(a % 2 == 0)
+ b = 2 * a + c;
+else
+ b = a / 2 +c;
+
+Switch Komutu
+
+Var gun=3;
+var gunAdi;
+switch(gun) {
+ case 1:
+ gunAdi = "Pazartesi";
+ break;
+ case 2:
+ gunAdi = "Salı";
+ break;
+ case 3:
+ gunAdi = "Çarşamba";
+ break;
+ case 4:
+ gunAdi = "Perşembe";
+ break;
+ case 5:
+ gunAdi = "Cuma";
+ break;
+ case 6:
+ gunAdi = "Cumartesi";
+ break;
+ case 7:
+ gunAdi = "Pazar";
+ break;
+ default:
+ gunAdi = "belirsiz";
+ break;
+}
+document.write("Gün adı = " + gunAdi);
+
+ÇIKTI
+
+Gün adı = Çarşamba
+
+
+En sondaki default ifadesini yazmak şart değildir, ancak yazılacak ise bir defa
+yer almalıdır. Default ifadesi, var olan case değerlerinden hiç biri ile eşleşme
+olmuyorsa çalıştırmak istenilen komutlar için eklenir. Genellikle default ifadesi
+tüm case ifadelerinden sonra yazılır ancak bu şart değildir. Eğer araya yazılacak ise
+break komutu ile sonlandırılması gerekir.
+
+Switch komutu
+içerisindeki break
+komutu yazılmazsa söz
+dizim hatası olmaz,
+ancak mantık hatası
+olabilir.
+
+var gun=10; // eşleşme olmazsa, default kısmı çalışır
+var gunAdi;
+switch(gun) {
+ case 1:
+ gunAdi = "Pazartesi";
+ break;
+ case 2:
+ gunAdi = "Salı";
+ break;
+ case 3:
+ gunAdi = "Çarşamba";
+ break;
+ case 4:
+ gunAdi = "Perşembe";
+ break;
+ case 5:
+ gunAdi = "Cuma";
+ break;
+ case 6:
+ gunAdi = "Cumartesi";
+ break;
+ case 7:
+ gunAdi = "Pazar";
+ break;
+ default:
+ gunAdi = "belirsiz";
+ break;
+ }
+document.write("Gün adı = " + gunAdi);
+ÇIKTI
+Gün adı = belirsiz
+
+Eğer farklı değerler için aynı komutlar çalıştırılmak istenirse, her değer için
+bir case yazılır ancak break yazılmadan aşağıdaki gibi boş bırakılır. 
+
+var gun=3;
+var gunAdi;
+switch(gun) {
+ case 1:
+ case 2:
+ case 3:
+ case 4:
+ case 5:
+ gunAdi = "hafta içi";
+ break;
+ case 6:
+ case 7:
+ gunAdi = "hafta sonu";
+ break;
+ default:
+ gunAdi = "belirsiz";
+}
+document.write("Gün adı = " + gunAdi);
+ÇIKTI
+Gün adı = hafta içi
+
+Koşul Operatörü (?:)
+
+Bir koşula bağlı olarak, iki farklı değerden birini seçen operatör, koşul
+operatörüdür ( ? : ). Kullanımı aşağıdaki gibidir.
+• Değişken = koşul ? değer1 : değer2;
+Öncelikle koşulun sonucuna bakılır, sonuç true ise değer1 olarak ifade edilen
+değer Değişken’e aktarılır. Eğer sonuç false ise değer2 olarak ifade edilen değer
+Değişken’e aktarılır.
+
+var a = 6, sonuc;
+sonuc = a % 2 == 0 ? "çift" : "tek";
+document.write("a degişkeni " + sonuc + " sayıdır");
+ÇIKTI
+a değişkeni çift sayıdır
+
+Koşul operatörü ile yapılan işlem, if..else komutu ile yapılabilir, ancak daha
+kısa olduğu için tercih edilebilir
+
+If Else Komutu ile Çözüm
+var a = 6, sonuc;
+if(a % 2 == 0)
+ sonuc = "çift";
+else
+ sonuc = "tek";
+document.write("a degişkeni " + sonuc + " sayıdır");
+
+
+Eğer metin içinde sembol olarak tek tırnak ya da çift tırnağa ihtiyaç varsa
+önüne ters bölü ( \ ) sembolü eklenerek metin içerisinde yer verilebilir.
+•var d="Ankara'da hava sıcak<br>";
+•var e='Ankara\'da hava sıcak<br>';
+•var f="Ankara \"sıcaklık\" artıyor<br>";
+•document.write(d); // Çıktı : Ankara'da hava sıcak
+•document.write(e); // Çıktı : Ankara'da hava sıcak
+•document.write(f); // Çıktı : Ankara "sıcaklık" artıyor
+
+Length özelliği metni oluşturan tüm karakterlerin adedini verir. Buna göre
+metnin ilk karakterinin indisi 0 iken, son karakterin indisi a.length-1’dir.
+
+Büyük ve Küçük Harf Kontrolü ve Çevirme
+
+Metindeki karakterlerin büyük harfe ya da küçük harfe çevrilmesi için
+toUpperCase() ve toLowerCase() özellikleri kullanılır.
+
+Metindeki karakterlerin büyük harfe ya da küçük harfe çevrilmesi için
+toUpperCase() ve toLowerCase() özellikleri kullanılır.
+
+Eğer metindeki bir karakterin büyük ya da küçük olduğunu sorgulamak
+isterseniz aşağıdaki örnekte gösterildiği üzere karakterin, kendisinin büyük ya da
+küçük hâline eşit olup olmadığı kontrol edilebilir.
+
+Javascript Komutları
+var a="Merhaba dünya";
+if(a[0] == a[0].toUpperCase())
+ document.write("ilk karakter büyük")
+ else
+ document.write("ilk karakter küçük")
+Çıktı:
+İlk karakter büyük
+
+Metin İçinde Arama Yapma
+
+Metin içerisinde karakter ya da başka metin aramak için indexOf() ve
+lastIndexOf() fonksiyonları kullanılır. Bu fonksiyonlar aradıkları ifadenin metin
+içerisindeki, varsa, indis numarasını geri döndürürler.
+IndexOf() baştan, lastIndexOf() ise sonda aramaya başlar. Eğer ifade
+bulunmazsa -1 değerini döndürürler. Arama yine büyük ve küçük harfe duyarlıdır.
+
+var a="Merhaba dünya";
+var konum1=a.indexOf("a");  4
+var konum2=a.lastIndexOf("a");  12
+var konum3=a.indexOf("A");  -1
+
+Metnin Karakterleri Üzerinde İşlem Yapma
+
+Metnin karakterlerine, karakter dizileri gibi indis numarası ile erişilebilir.
+Ancak bu metnin bir dizi olduğu anlamına gelmez. İndis numarası ile karakterler
+ulaşabiliriz ancak onları bu yolla değiştiremeyiz.
+
+var a="Merhaba dünya";
+a[0]= "T"; // Hata vermez ancak değişiklik yapmaz!
+document.write(a); // Çıktı: Merhaba dünya
+
+Eğer karakterler üzerinde işlem yapmak istersek o zaman metni önce
+karakter dizisine dönüştürmek gerekir. Dizi konusu ileride anlatılacaktır ancak
+metinlerin diziye dönüştürülmesini aşağıdaki örnek ile burada görelim.
+
+var a="Merhaba dünya";
+var k=a.split(""); // karakterlere göre parçalama
+document.write(a);
+k[0]="T"; // İlk karakteri T yapma
+document.write(k);
+a=k.join(""); // Karakterleri birleştirme ve string yapma
+document.write(a);
+
+Merhaba dünya
+T,e,r,h,a,b,a, ,d,ü,n,y,a
+Terhaba dünya
+
+DÖNGÜLER
+
+Programlama sürecinde bir ya da birden çok komutun, bir kez yazıldığı hâlde
+birden çok kez tekrar çalışmasını sağlayan komutlara döngüler denir. Döngüler
+tıpkı koşul komutları gibi programlama dillerinin temel komutlarıdır ve
+programların daha az sayıda satır ile yazılabilmelerini sağlar.
+
+For Döngüsü
+
+Tekrarlanma sayısı belirli olan durumlarda for döngüsü kullanmak tavsiye
+edilir.
+
+For Döngüsü Yapısı ve Tanımlar
+
+For Döngüsü Yapısı ve Tanımlar
+for(komut1; koşulKomutu; komut3) {
+tekrarlanması istenilen komutlar;
+tekrarlanması istenilen komutlar;
+tekrarlanması istenilen komutlar;
+}
+komut1;
+örneğin
+i=0;
+yada
+sayac=50;
+Bu komut ilk sırada ve bir defa çalıştırılır. Genellikle döngüde
+kullanılacak sayaç değişkeninin ilk değerini vermek için
+kullanılır. Eğer istenirse birden fazla değişkene, aralarına virgül
+konularak ilk değer verilebilir. Sonunda noktalı virgül yer
+almalıdır.
+koşulKomutu;
+örneğin
+i<100;
+ya da
+sayac%5==0;
+Komut1’den sonra çalıştırılır, sonucun true (doğru) olması
+durumunda döngü içerisindeki “tekrarlanması istenilen
+komutlar” bloku çalıştırılır. Eğer koşulKomutu değeri false
+(yanlış) olursa for döngüsü sona erer ve program akışı for
+döngüsü bloku dışından devam eder.
+komut3;
+örneğin
+i++;
+sayac--;
+Blok çalıştıktan sonra komut3 çalıştırılır. Genellikle, sayaç
+olarak kullanılan değişkenin artma ya da azaltma komutu
+verilir.
+Bu komuttan sonra akış yine koşulKomutuna geçer ve koşulun
+sonucuna göre ya blok çalıştırılır ya da döngü sona erer.
+
+<table border="1" width="200">
+<script>
+var sayac;
+for(sayac=1; sayac<=5; sayac++)
+ document.write("<tr><td>Merhaba dünya</td></tr>");
+</script>
+</table>
+
+Döngü kullanımında yapılan iki tür hata vardır: Döngünün hiç başlamaması
+ya da döngünün hiç bitmemesi, yani sonsuz döngü durumu. Her iki durum da çoğu
+zaman programcının mantık hatasından kaynaklanır. Bu iki hata tüm döngülerde
+yapılabilir. Aşağıdaki iki örnekten ilkinde for döngüsünün hiç başlamadığı,
+ikincisinde ise döngünün sona eremediği görülebilir.
+
+•Hatalı döngü örneği: Döngü hiç başlamaz!
+var sayac;
+for(sayac=1; sayac>=5; sayac++)
+document.write("Merhaba");
+•Hatalı döngü örneği: Döngü başlar ancak hiç bitmez!
+var sayac;
+for(sayac=1; sayac<=5; sayac--)
+document.write("Merhaba");
+
+While Döngüsü
+
+Tekrar etmesini istediğimiz komutların, belirli bir koşul sağlandığı sürece
+tekrar çalıştırılmasını sağlayan döngü while döngüsüdür.
+
+While Döngüsü Yapısı
+
+while(koşulKomutu) {
+tekrarlanması istenilen komutlar;
+}
+koşulKomutu: Bu koşul true veya false üreten bir ifade olmalıdır. İfade true
+(doğru) değerini ürettiği sürece döngü içerisindeki komutlar
+çalıştırılır.
+
+While döngüsünde, daha önce bahsedilen iki hata riski daha fazladır.
+Döngünün hiç başlamaması veya döngünün hiç bitmemesi için koşul dikkatli
+yazılmalı ve döngü bloku içerisinde bu koşulu er ya da geç false değerine
+dönüştürecek işlemler unutulmamalıdır.
+
+<table border="1" width="200">
+<script>
+var sayac=1; // önemli
+while(sayac<=5){
+ document.write("<tr><td>Merhaba dünya</td></tr>");
+ sayac++; // önemli
+}
+</script>
+</table>
+
+Do While Döngüsü
+
+Tekrar edilecek işlemlerin en az bir defa çalıştırılması ve devamında bir
+koşula göre tekrar çalıştırılması gerekirse, kullanılması gereken döngü do while
+olabilir.
+
+Do while döngüsü yapısı
+do{
+tekrarlanması istenilen komutlar;
+tekrarlanması istenilen komutlar;
+tekrarlanması istenilen komutlar;
+}while(koşulKomutu);
+koşulKomutu
+Önce blok içerisindeki komutlar bir kez çalıştırılır.
+Ardından true veya false üreten koşulKomutu kontrol edilir.
+Sonuç true (doğru) değerini ürettiği sürece döngü içerisindeki
+komutlar çalıştırılır.
+
+DİZİLER
+
+Aynı türde birden fazla değeri ayrı ayrı tutabilen değişkenlere dizi (array)
+denir. Kimi programlama dillerinde diziler bir değişken türü, kimilerinde ise veri
+tutan nesne türü olarak tanımlanmıştır. Javascript’te bu yapılar tür olarak nesne
+(object) türündedir. 
+
+Dizi Tanımlama
+
+var dizi1=[2,4,6,8,10];
+document.write("dizi1 elemanları=" + dizi1 + "<br>");
+var dizi2=["TL", "USD", "EU"];
+document.write("dizi2 elemanları=" + dizi2 + "<br>");
+var dizi3=new Array(5,10,15,20);
+document.write("dizi3 elemanları=" + dizi3 + "<br>");
+ÇIKTI
+dizi1 elemanları=2,4,6,8,10
+dizi2 elemanları=TL,USD,EU
+dizi3 elemanları=5,10,15,20
+
+• Diziler farklı türlerde değerleri saklayabilir.
+• Dizilere ilk değerler, köşeli parantez içerisinde ve aralarına virgül yazılarak
+verilebilir.
+• Dizilere ilk değerler, new Array() komutunun parantezleri içerisinde
+aralarına virgül yazılara verilebilir.
+• document.write() komutu dizinin tüm elemanlarını, ekrana aralarına virgül
+koyarak yazabilir.
+
+• Diziler farklı türlerde değerleri saklayabilir.
+• Dizilere ilk değerler, köşeli parantez içerisinde ve aralarına virgül yazılarak
+verilebilir.
+• Dizilere ilk değerler, new Array() komutunun parantezleri içerisinde
+aralarına virgül yazılara verilebilir.
+• document.write() komutu dizinin tüm elemanlarını, ekrana aralarına virgül
+koyarak yazabilir.
+
+• var d1=[]; // 0 elemanlı bir dizi
+• var d2=new Array(); // 0 elemanlı bir dizi
+• var d3=new Array(5); // 5 elemanlı bir dizi
+
+Öte taraftan new Array() komutundaki parantezlerin içerisine yazılan
+değerlere dikkat etmek gerekir. Eğer tek bir tam sayı yazılırsa, o zaman bu sayı
+dizinin eleman sayısı olarak algılanır. Eğer birden fazla değer yazılırsa, bunlar
+dizinin elemanlarının ilk değerleri olarak algılanır.
+
+var d3=new Array(5);  5 elemanlı bir dizi
+var d3=new Array(5,6,7);  3 elemanlı bir dizi 
+
+Dizilerin Elemanlarına Erişim ve İndis Numaraları
+
+Dizilere atanan değerlere o değerin sırasına göre indis numarası ile teker
+teker erişilebilir. İndis numarası her zaman 0’dan başlar.
+
+Dizinin Eleman Sayısı
+
+Dizilerin eleman sayısına “dizinin uzunluğu” da denilebilir ve length ifadesi
+ile tamsayı olarak elde edilebilir.
+
+Hiç elemanı olmayan
+dizilerin eleman sayısı
+(length değeri) 0’dır.
+
+Dizilerin Elemanlarına Döngüler ile Erişim
+
+Dizilerin elemanlarının her biri için yapılacak işlemler genellikler aynı olduğu
+için bu işlemlerin döngüler içerisinde yapılması tercih edilir. Dizilerin eleman
+sayıları belirli olduğu için (length özelliği ile) bu işlemlerde en çok for döngüsü
+tercih edilir.
+
+var sayilar=[4,6,2,8, 4,5,12];
+var sayac, toplam = 0;
+var ortalama;
+for(sayac= 0; sayac < sayilar.length; sayac++){
+ toplam += sayilar[sayac];
+}
+ortalama = toplam / sayilar.length;
+document.write("Toplam=" + toplam + "<br>");
+document.write("Eleman sayısı=" + sayilar.length + "<br>");
+document.write("Ortalama=" + ortalama + "<br>");
+ÇIKTI
+Toplam=41
+Eleman sayısı=7
+Ortalama=5.857142857142857
+
+Dizi Elemanları İçinde Arama Yapma
+
+Dizilerin elemanları arasında arama yapmak için indexOf ya da lastIndexOf
+fonksiyonları kullanılır. IndexOf aranan değerin dizinin başından itibaren ilk
+bulunduğu konumun indis numarasını, lastIndexOf ise sondan itibaren ilk bulduğu
+konumun indis numarasını döndürür. Eğer değer bulunmazsa -1 değeri
+döndürülür. Metin türündeki dizilerde arama işlemlerinde büyük ve küçük harf
+fark eder.
+
+var sayilar=[10,5,2,3,8,1,5];
+var sehirler=["İstanbul", "Ankara", "İzmir"];
+var sonuc;
+sonuc=sayilar.indexOf(5);  1 döndürür
+sonuc=sayilar.indexOf(4);  -1 döndürür
+sonuc=sayilar.lastIndexOf(5);  6 döndür
+sonuc=sehirler.lastIndexOf(İzmir);  2 döndür
+sonuc=sehirler.lastIndexOf(izmir);  -1 döndür, i küçük!
+
+FONKSİYONLAR
+
+Birden fazla komutu gruplayarak tek bir isim ile çağırabildiğimiz yapılara
+fonksiyon denir.r. Fonksiyonlar tüm programlama dillerinde benzer şekilde
+kullanılırlar. Sıklıkla yapılan işlerin tekrarlanması durumunda gereksiz yere yer
+işgal etmemeleri ve ya farklı değerler için aynı işlemin yapılması gerektiğinde
+yeniden aynı kodları yazmamak adına bu işler fonksiyon hâline getirilir.
+
+
+Javascript’te Fonksiyon Tanımlama
+
+function fonksiyonAdi (varsaParametre1, varsaParametre2, … )
+{
+ Fonksiyon içinde çalışması istenen komutlar….
+ return varsaGeriDönüşDeğeri;
+}
+
+ÇAĞIRMANIN İKİ YOLU
+
+// 1. Geri dönüş değeri varsa:
+var değişken= fonksiyonAdi(argümman1, argüman2…)
+// 2. Geri dönüş değeri yoksa
+fonksiyonAdi(argüman1, argüman2);
+
+function topla(a,b){
+ return a + b;
+}
+var sayi1=10, sayi2=30;
+var sonuc=topla(sayi1, sayi2);
+document.write("Sonuc=" + sonuc);  Sonuc=40
+
+Bir fonksiyon bir defa
+tanımlanır ancak birden
+çok defa çağırılabilir.
+
+document.write("Sonuc=" + sonuc);  Sonuc=40//Tekrar çağırıldı.
+document.write("Sonuc=" + topla(sayi1,sayi2));  Sonuc=40 //Tekrar çağırıldı
+
+Parametreler ve Argümanlar
+
+Parametreler aslında değişkenlerdir. Fonksiyonun eğer istenirse çağırıldığı
+noktadan değişkenler ya da değerler almasını sağlar. Tanımlama başlığında
+parantez içerisinde bir ya da birden çok parametre alabilir, eğer parametre
+istenmezse o zaman parantezlerin içi boş bırakılır.
+
+Tanımlama kısmında eğer parametre eklenirse, o zaman o fonksiyon
+çağırılma kısmında da aynı sayıda argüman ile çağırılmalıdır. Argümanlar değişken
+ya da açık bir değer olabilir. Aşağıdaki örnekte tanımlamaya, çağırmaya ve
+açıklamalara dikkat ediniz:
+
+Return Komutu
+
+Eğer fonksiyon içerisindeki işlemlerin sonucunda, fonksiyonun çağırıldığı
+noktaya bir değer göndermek istenirse, o zaman fonksiyonun uygun yerine return
+kelimesi ve yanına uygun bir değer ya da değişken yazılır. Eğer farklı durumlarda
+farklı değerler geri döndürülecek ise birden fazla return yazılabilir. Fonksiyonların
+çalışması, eğer varsa, kendi içerisindeki return kelimesine ulaşıldığında sona erer.
+Return kelimesinden sonraki komutlar çalıştırılmaz. Öte taraftan eğer return
+kelimesi yoksa fonksiyonun tüm komutları çalıştırılır.
+Fonksiyonlar, çağırıldıkları anda programın akışını devralır ve kendi
+içerisindeki komutların çalışması bitene kadar ya da varsa return komutuna
+ulaşana kadar akışı elinde tutar.
+
+Return komutu,
+fonksiyonu bitiren
+komuttur.
+
+function kucukOlan(x,y){
+ if(x<y)
+ return x;
+ return y;
+}
+var a=10, b=20, c;
+c=kucukOlan(a,b);
+document.write("Küçük olan=" + c);
+
+Küçük olan=10
+
+Yukarıdaki örnekte, 10 ve 20 değerleri ile çağrılan fonksiyon, return x
+komutuna gelince x’in değerini (10) geri döndürür ve fonksiyon bu satırda durur
+
+Fonksiyonların Çalışma Zamanı
+
+Fonksiyonlar 3 farklı zamanda çalışabilir:
+
+• Komutlar içerisinde çağırıldıklarında,
+
+• HTML sayfasındaki bir elemanın herhangi bir olayı tetiklendiğinde,
+
+• Kendi kendine.
+
+onClick olayı fare ile
+tıklanma durumunda
+çalışacak fonksiyonlar
+için kullanılır.
+
+<script>
+function yaziDegistir(yeniMetin){
+ document.getElementById("p1").innerText=yeniMetin;
+}
+</script>
+<p id="p1" onClick="yaziDegistir('Merhaba');">Bu bir paragraftır</p>
+
+Fonksiyonların JS Dosyalarına Yazılması
+
+Fonksiyonlar genellikle birden çok HTML sayfasında benzer biçimde
+çalışılmaları için yazılırlar. Bu durumda fonksiyonun her HTML sayfasında tekrar
+tanımlanması gerekir. Bunun yerine fonksiyonlar JS uzantılı Javascript dosyaları
+içerisine yazılıp, HMTL sayfalarına eklenebilirler.
+
+<!-- index.html dosyası -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script language="JavaScript" src="scripts.js"></script>
+</head>
+<body>
+<p id="p1" onclick="yaziDegistir('Merhaba', 'p1');">Bu bir paragraftır</p>
+</body>
+</html>
+ÇIKTI
+// scripts.js dosyası
+function yaziDegistir(yeniMetin, paragrafID){
+ document.getElementById(paragrafID).innerText=yeniMetin;
+}
+İLK ÇIKTI:
+Bu bir paragraftır
+TIKLAMA SONRASI ÇIKTI
+Merhaba
+
+OLAYLAR
+
+HTML etiketleri sayfaya yüklenme anında ya da yüklendikten sonra
+kullanıcının hareketlerini algılayabilirler. Algılayabildikleri bu durumlara olay
+(event) denir. Algılanan bir olay sonucunda Javascript komutları ya da
+fonksiyonları çalıştırılabilir.
+
+<script>
+function git(adres){
+ alert("Sayfadan ayrılıyorsunuz...");
+ document.location.href=adres;
+}
+</script>
+</head>
+<body onload="alert('Sayfaya hoşgeldiniz');">
+<h1 onclick="alert('başlığa tıkladınız');">Javascript Dersleri</h1>
+<p onclick="alert('başlığa tıkladınız');">Bu bir paragraftır</p>
+<button onclick="git('http://www.google.com.tr')">Google'a git</button>
+</body>
+
+<script>
+function git(adres){
+ alert("Sayfadan ayrılıyorsunuz...");
+ document.location.href=adres;
+}
+</script>
+</head>
+<body onload="alert('Sayfaya hoşgeldiniz');">
+<h1 onclick="alert('başlığa tıkladınız');">Javascript Dersleri</h1>
+<p onclick="alert('başlığa tıkladınız');">Bu bir paragraftır</p>
+<button onclick="git('http://www.google.com.tr')">Google'a git</button>
+</body>
+
+Olaylar HTML içerisinde
+büyük/küçük harfle
+yazılabilir.
+
+En Sık Kullanılan Olaylar
+
+Olay Adı Açıklaması
+onClick HTML elemanına kullanıcının fare ile tıklanması
+onDblClick Elemana fare ile çift tıklanması
+onLoad Body, image veya frame gibi elemanların yüklenmesinin
+tamamlanması
+onUnLoad Web sayfasından çıkıldığında (tarayıcıyı kapatarak ya da
+yeni bir sayfaya giderek)
+onFocus Bir elemana odak (focus) yapıldığında
+onBlur Odağa sahip elemanın odağı kaybetmesi sırasında
+onMouseOver Fare işaretçisinin elemanın üzerine geldiğinde
+onMouseOut Fare işaretçisinin elemanın üzerinden çekilmesi sırasında
+onMouseMove Fare işaretçisiyle elemanın üzerinde hareket edilmesinde
+(elemanın dışına çıkılmadan)
+onMouseDown Fare işaretçisinin elemanın üzerindeyken farenin sol
+tuşunun basılması
+onMouseUp Fare işaretçisinin elemanın üzerindeyken farenin sol
+tuşunun bırakılması
+onKeyDown Klavyeden bir tuşa basılması
+onSelect Bir metin kutusu (textarea ya da input) içindeki metnin fare
+ile seçilmesi
+onChange Bir listeden seçim yapıldığında
+onResize Tarayıcı penceresinin boyutunun değiştirilmesi
+
+DOM MODELİ
+
+HTML sayfaları yüklendiğinde, tarayıcılar sayfadaki tüm elemanları (HTML
+etiketlerini) document ismindeki bir nesnenin alt nesneleri olarak belirler. Bu
+hiyerarşi sayesinde HTML sayfasındaki tüm etiketlerin içeriği, özellikleri, CSS stilleri
+ve alt etiketleri değiştirilebilir. Bu hiyerarşik yapıya Document Object Model (DOM)
+denir. 
+
+DOM tarayıcı tarafından yaratılır ve farklı betik dilleri ile (örneğin Javascript,
+VBScript vb.) programlanabilir.
+
+DOM, farklı betik
+(script) dilleri ile
+kullanılabilir, ancak
+HTML5 standartlarında
+Javascript kabul
+edilmiştir.
+
+Javascript ile DOM kullanılarak aşağıdaki işlemler yapılabilir:
+• Herhangi bir HTML elemanı sayfaya eklenebilir, var olanlar silinebilir.
+• Herhangi bir HTML etiketinin herhangi bir özelliği değiştirilebilir,
+eklenebilir, silinebilir.
+• Herhangi bir HTML etiketinin CSS stilleri değiştirilebilir.
+• Herhangi bir HTML elemanının olayına yönelik kod yazılabilir.
+• Herhangi bir HTML etiketine yeni olay eklenebilir.
+DOM, Javascript veya farklı betik dilleri ile dinamik içerik oluşturulabilmesi
+için;
+• HTML etiketlerini nesne olarak,
+• Bu nesnelerin özelliklerini,
+• Nesne ve özelliklere ulaşmak için gerekli metotları ve
+• Nesnelerin olaylarını tanımlayan modeldir.
+
+DOM ile Elemanlara Erişim
+
+document.getElementById(“idBilgisi”) Sayfa içerisinde id özelliğine
+göre elemana erişme
+document.getElementsByName(“nameBilgisi”) Sayfa içerisinde name özelliğine
+göre elemanlara erişme
+document.getElementsByTagName(“EtiketAdi”) Sayfa içerisinde etiketin adına
+göre elemanlara erişme
+document.getElementsByClassName(“classAdı”) Sayfa içerisinde CSS sınıfı
+özelliğine göre elemanlara
+erişme
+
+Yukarıdaki dört erişim yolundan getElementById(), sayfadaki id bilgisi bilinen
+bir elemana erişir. Diğer metotlar ise, name özelliği, sınıf özelliği veya etiket adı
+verilen birden çok elemana erişmeyi sağlar. Bu son üç metot birden fazla eleman
+bulunması ihtimaline karşın, elemanları 0’dan başlayan dizinin elemanları olarak
+erişir. Aşağıdaki örnekte, getElementsByName() ve getElementsByClassName()
+metotlarından sonra dizinin 0’dan başlayan indis numarası bu nedenle
+kullanılmıştır. 
+
+<head>
+ <style>
+ .yaziStili{
+ font-style: italic;
+ }
+ </style>
+</head>
+<body>
+<p id="yazi1">Bu birinci paragraftır.</p>
+<p name="yazi2">Bu ikinci paragraftır.</p>
+<p name="yazi2">Bu üçüncü paragraftır.</p>
+<p class="yaziStili">Bu dördüncü paragraftır.</p>
+<p class="yaziStili">Bu beşinci paragraftır.</p>
+
+<script>
+document.getElementById("yazi1").innerText="Birinci paragraf değişti";
+document.getElementsByName("yazi2")[0].innerText="İkinci prgf değişti";
+document.getElementsByName("yazi2")[0].innerText="Üçüncü prgf değişti";
+document.getElementsByClassName("yaziStili")[0].innerText="Yatık
+ paragraflardan ilki değişti";
+document.getElementsByClassName("yaziStili")[1].innerText="Yatık
+ paragraflardan ikincisi değişti";
+</script>
+</body>
+
+Elemanlara erişim için
+kullanılan metotlar,
+eğer kritere uyan
+eleman bulunamazsa
+undefined sonucunu
+geri döndürür
+
+InnerHTML ve InnerText Özellikleri
+
+ HTML elemanının açılış ve kapanış etiketlerinin içine yeni HTML etiketleri
+eklemek isterseniz ya da var olan HTML etiketlerini değiştirmek isterseniz,
+innerHTML özelliğini kullanınız.
+
+DOM Elemanlarının Özellik ve Stillerini Değiştirmek
+
+HTML etiketlerinin özellik (attribute) ve stil ögelerini (style) Javascript ile
+değiştirebilirsiniz.
+
+<script>
+function resimDegistir(resimDosyasiAdi){
+document.getElementById("resimKutusu").src=resimDosyasiAdi;
+document.getElementById("resimKutusu").height=100;
+// Üstteki satır VE YA alttaki satır
+document.getElementById("resimKutusu").setAttribute("height",100);
+document.getElementById("resimKutusu").style.border="1px solid black";
+}
+</script>
+</head>
+<body>
+<img src="resim1.jpg" width="200" id="resimKutusu"/>
+<button onclick="resimDegistir('resim2.jpg');">Resim Degistir</button>
+</body>
+
+Javascript ile
+değiştirilecek olan stil
+sınıfları önceden
+tanımlanmış olmalıdır.
+
+WINDOW NESNESİ
+
+Window nesnesi, kullanıcının tarayıcısının özelliklerinin toplandığı ve
+Javascript ile programlanabilir alt özellik ve metotlara sahip nesnedir. 
+
+Tarayıcı Ebatları
+
+Kullanıcıların tarayıcıları farklı ekranlarda ve farklı en ve boy değerlerinde
+olabilir. Bu durum Javascript ile algılanabilir.
+
+window.innerWidth Tarayıcının genişliğini piksel cinsinden verir.
+window.innerHeight Tarayıcının yüksekliğini piksel cinsinden verir.
+window.screen.width Ekranın genişliğini piksel cinsinden verir.
+window.screen.height Ekranın yüksekliğini piksel cinsinden verir.
+window.screen.pixelDepth Ekranın renk derinliğini (16,24 veya 32) verir.
+
+Yukarıdaki özellikler farklı ekran büyüklüklerinde farklı görünümlü HTML
+sayfalarını göstermek için kullanılabilir.
+
+<p id="bilgi"></p>
+<script>
+var eleman=document.getElementById("bilgi");
+bilgi.innerHTML="Tarayıcı Genişliği = " + window.innerWidth +
+ "px</br>";
+bilgi.innerHTML=bilgi.innerHTML+"Tarayıcı Yüksekliği=" +
+ window.innerHeight+"px";
+bilgi.innerHTML=bilgi.innerHTML+"<hr>";
+bilgi.innerHTML=bilgi.innerHTML+"Ekran Genişliği=" +
+ window.screen.width + "px</br>";
+bilgi.innerHTML=bilgi.innerHTML+"Ekran Yüksekliği=" +
+ window.screen.height+"px";
+bilgi.innerHTML=bilgi.innerHTML+"<hr>";
+bilgi.innerHTML=bilgi.innerHTML+"Ekran Çözünürlüğü= " +
+ window.screen.pixelDepth+ "bit</br>";
+bilgi.innerHTML=bilgi.innerHTML+"<hr>";
+</script>
+
+Tarayıcı Adresi
+
+Window.location nesnesi, ziyaret edilen web sitesinin ve sayfasının tam
+adresini, sayfanın adını, bağlantı protokolünü verir. İstenirse başka bir web sayfası
+adresi verilerek yeni sayfanın yüklenmesi sağlanır.
+
+window.location.href Aktif sayfanın tam adresini verir.
+Örnek çıktı: http://www.websites.com.tr/javascript/konu1.html
+window.location.hostname Aktif sayfanın sunucu ismini verir.
+Örnek çıktı: http://www.websites.com.tr
+window.location.pathname Aktif sayfanın yolunu ve dosya adını verir.
+Örnek çıktı: /javascript/konu1.html
+window.location.protocol Aktif sayfanın bağlantı protokolünü verir (http: ya
+da https: şeklinde).
+Örnek çıktı: http:
+window.location.assign() Yeni sayfanın yüklenmesini sağlar.
+Örnek kullanımı: window.location.assign(“http://www.site2.com”);
+
+Tarayıcı Geçmişi Nesnesi
+
+Tarayıcılar ziyaret edilen tüm sayfaları “geçmiş” adı altında bir liste şeklinde
+saklar. Bu listeye Javascript ile ulaşabilirsiniz. Örneğin kullanıcınızın herhangi bir
+işlemi yanlış yaptığında bir önceki sayfaya gitmesini sağlayabilirsiniz. Bunun için
+window.history nesnesinin back() ve forward() metotları kullanılır.
+
+Eğer tarayıcının
+geçmişinde herhangi
+adres yoksa back() ve
+forward() komutları
+işlem yapmaz.
+
+<button onclick="window.history.back();">Geri git</button>
+<button onclick="window.history.forward();">İleri git</button>
+
+Tarayıcı Adı ve Sürümünü Belirleme
+
+avascript’in en çok kullanıldığı yer, tarayıcı algılamaktır. Bunun nedeni,
+farklı tarayıcıların farklı kodları (Javascript, CSS ve hatta HTML) farklı biçimde
+desteklemesidir. Geliştiriciler bu probleme karşın, farklı tarayıcılar için alternatif
+kodlar yazarak yapılması gereken işlemlerin farklı tarayıcıya sahip kullanıcıları için 
+yapılmasını sağlamaya çalışırlar. Bunun için öncelikle tarayıcının adının ve sürüm
+numarasının algılanması gerekir.
+Window.navigator nesnesi, tarayıcı hakkında bilgi veren bir nesnedir.
+Aşağıdaki örnekte tarayıcı adı ve sürümünü algılayan kodlar yer almaktadır
+
+Mesaj Kutuları
+
+Kullanıcıya tarayıcının içerisinde açılarak kısa mesajlar vermeyi veya
+kullanıcıdan kısa bilgiler almayı sağlayan birkaç mesaj kutusu alternatifi vardır.
+Bunlar window nesnesinin;
+• window.alert() komutu
+• window.confirm() komutu ve
+• window.promtp() komutudur.
+
+Alert(), confirm() ve
+prompt() metotları,
+window kelimesi
+olmadan da
+kullanılabilir.
+
+<script>
+alert("Javascript ünitesine hoş geldiniz.");
+</script>
+
+p id="bilgi"></p>
+<script>
+if(confirm("Javascript bir betik dilidir"))
+ metin="Tamama basıldı";
+else
+ metin="İptale basıldı"; document.getElementById("bilgi").innerText=metin;
+ </script>
+
+ Yukarıdaki örnekte görülen confirm() metodunda, ekrana yazılan mesajdan
+başka ayrıca “Tamam” ve “İptal” butonları da vardır. Kullanıcının bu iki butondan
+herhangi birine tıklamasıyla pencere kapanır. Eğer “Tamam” butonuna tıklanırsa
+confirm metodu true, “İptal” butonuna tıklanırsa “false” değerini döndürür. 
+
+Örnekteki gibi bir if ile bu değer kontrol ettirilip, farklı işlemler kullanıcı cevabına
+göre yapılabilir.
+
+<p id="bilgi"></p>
+<script>
+var isim=prompt("Adınızı giriniz:", "adınız");
+if(isim!= null)
+ metin="Merhaba sayın " + isim;
+else
+ metin="İptale basıldı";
+document.getElementById("bilgi").innerText=metin;
+</script>
+
+Prompt komutunda ilk parametre olarak ekranda görünmesini istediğiniz
+ifadeyi, ardından ikinci parametre olarak da metin kutusunda varsayılan değer
+olarak yer almasını istediğimiz değeri yazılır. Kullanıcı bilgi girip “Tamam”
+butonuna tıklarsa, bu metot girilen değeri; eğer “İptal” butonuna tıklarsa null
+değerini döndürür.
+
+
+Açılır Pencere Açma
+
+Birçok web sitesinde var olan tarayıcının içerisinde yeni bir sayfa ya da
+sekme açmak için window.open() metodu kullanılır. Bu metot toplam dört
+parametre alabilir.
+
+Açılır pencereler (popup windows) bazı
+tarayıcılar tarafından
+engellenebilir.
+
+window.open("http://yenisite.com", "_blank", "width=200", true);
+
+• _blank  yeni tarayıcı penceresi veya yeni tarayıcı sekmesi
+• _parent  varsa ana frame içerisi
+• _self  şu anda içinde bulunulan pencere ya da frame
+• _top  Varsa tüm frameset’lerin üstündeki ana pencere
+
+
+
+Bir JavaScript Kütüphanesi Olarak jQuery
+
+jQuery Nasıl Çalışır?
+JavaScript kütüphanelerinin genel çalışma prensipleri jQuery için de
+geçerlidir. Aslında basit bir metin dosyasından ibaret olan kütüphane dosyasına
+HTML kodunun yazıldığı dosyadan bağlantı verilmesi yeterli olmaktadır. jQuery
+kütüphane dosyasına iki farklı şekilde bağlantı sağlanabilir:
+
+Yukarıda belirttiğimiz bağlantı şekilleri aynı zamanda jQuery’nin nasıl
+kurulacağı ile ilgili durumu da belirler. jQuery kütüphane dosyasının sürekli güncel
+kalması isteniyorsa kütüphanenin İnternet üzerindeki depodan kullanılması uygun
+olacaktır. Ancak eğer geliştirilecek uygulama İnternet’e bağlı olmayan bir platform
+için ise (örneğin bir kiosk sistemi ya da bir gömülü sistem) kütüphane dosyasının
+yerel bir adreste bulunması gerekir.
+
+jQuery’nin nasıl çalıştığını gösteren kod bloku
+gösterilmektedir.9. satırda yer alan adres tanımlaması kütüphane
+dosyasının yerel ya da İnternet üzerindeki bulunmasına bağlı olarak değişiklik
+gösterebilir.
+
+1. <!doctype html>
+2. <html>
+3. <head>
+4. <meta charset="utf-8">
+5. <title>Örnek Bağlantı</title>
+6. </head>
+7. <body>
+8. <a href="http://jquery.com/">jQuery</a>
+9. <script src="jquery.js"></script>
+10. <script>
+11.
+12. // jQuery kodları burada yer alacak!
+13.
+14. </script>
+15. </body>
+16. </html>
+
+jQuery KURULUMU
+
+jQuery ile ilgili kurulumda ihtiyaç duyacağımız tüm kaynak dosyalar
+http://jquery.com/download/ adresinde yer almaktadır. Bu sayfada jQuery
+dosyalarının hem sıkıştırılmış hem de sıkıştırılmamış sürümleri yer alır. 
+

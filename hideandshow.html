@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDE AND SHOW</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#hide").click(function(){
+                $("p").hide(1000);
+                });
+                $("#show").click(function(){
+                    $("p").show(1000);
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <p>jQuery ile paragraf gizle, göster!</p>
+    <button id="hide">Gizle</button>
+    <button id="show">Göster</button>
+</body>
+</html>

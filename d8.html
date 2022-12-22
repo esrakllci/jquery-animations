@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Null</title>
+</head>
+<body>
+    <!-- Javascript’te null değeri ise nesnelerin değerini yok etmek için kullanılır. Null
+değerini alan nesnenin içindeki değer silinirken, türü yine object olarak kalır. Eğer
+nesnenin hem değerini hem de türünü sıfırlamak istenirse undefined değerine
+atanmalıdır.-->
+</body>
+<script>
+    var m=[10,20,30,40];
+    document.write("m=" + m + " tür:" + typeof(m) + "</br>");
+    m=null;
+    document.write("m=" + m + " tür:" + typeof(m) + "</br></br>");
+
+    var m=[10,20,30,40];
+    document.write("m=" + m + "tür:" + typeof(m) + "</br>");
+    m=undefined;
+    document.write("m=" + m + "tür:" + typeof(m) + "</br>");
+</script>
+</html>
